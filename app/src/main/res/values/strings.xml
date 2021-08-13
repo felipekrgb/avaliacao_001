@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Trabalho001</string>
+    <string name="button_add_repos">Adicionar Repositório</string>
+    <string name="hint_add_repos">owner/repo</string>
 </resources>

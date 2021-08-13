@@ -14,4 +14,10 @@ class MainFragment : Fragment(R.layout.main_fragment) {
         fun newInstance() = MainFragment()
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+
+    }
+
 }
