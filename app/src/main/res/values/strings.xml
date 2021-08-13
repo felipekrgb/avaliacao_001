@@ -2,4 +2,6 @@
     <string name="app_name">Trabalho001</string>
     <string name="button_add_repos">Adicionar Repositório</string>
     <string name="hint_add_repos">owner/repo</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
