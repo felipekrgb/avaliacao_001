@@ -9,7 +9,7 @@ import com.example.trabalho001.R
 import com.example.trabalho001.model.Repository
 
 class RepositoriesAdapter(
-    val repositoriesList: MutableList<Repository> = mutableListOf()
+    var repositoriesList: MutableList<Repository> = mutableListOf()
 ) : RecyclerView.Adapter<ViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
 
@@ -26,6 +26,12 @@ class RepositoriesAdapter(
 
     override fun getItemCount(): Int {
         return repositoriesList.size
+    }
+
+    fun update(newList: List<Repository>) {
+        repositoriesList = mutableListOf()
+        repositoriesList.addAll(newList)
+        notifyDataSetChanged()
     }
 }
 

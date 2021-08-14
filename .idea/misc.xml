@@ -7,6 +7,7 @@
         <entry key="app/src/main/res/layout/item_repositories_list.xml" value="0.1203125" />
         <entry key="app/src/main/res/layout/main_activity.xml" value="0.1203125" />
         <entry key="app/src/main/res/layout/main_fragment.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/repos_list_fragment.xml" value="0.1171875" />
       </map>
     </option>
   </component>

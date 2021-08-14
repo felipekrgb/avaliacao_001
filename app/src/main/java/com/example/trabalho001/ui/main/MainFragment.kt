@@ -30,12 +30,6 @@ class MainFragment : Fragment(R.layout.main_fragment), Callback<Repository> {
 
         loadComponents(view)
         loadEvents()
-
-        view.findViewById<Button>(R.id.nextPageButton).setOnClickListener {
-            requireActivity().supportFragmentManager.beginTransaction()
-                .replace(R.id.container, RepositoryListFragment.newInstance())
-                .commitNow()
-        }
     }
 
     private fun loadEvents() {
@@ -57,8 +51,8 @@ class MainFragment : Fragment(R.layout.main_fragment), Callback<Repository> {
         call.clone().enqueue(this)
     }
 
-    private fun addRepos(reposPath: String) {
-        RepositorySingleton.addToRepositoryList(reposPath)
+    private fun addRepos(repository: Repository) {
+        RepositorySingleton.addToRepositoryList(repository)
     }
 
     private fun loadComponents(view: View) {
@@ -67,8 +61,9 @@ class MainFragment : Fragment(R.layout.main_fragment), Callback<Repository> {
     }
 
     override fun onResponse(call: Call<Repository>, response: Response<Repository>) {
+        println("Adicionado com sucesso")
         response.body()?.apply {
-            addRepos(this.name)
+            addRepos(this)
         }
     }
 

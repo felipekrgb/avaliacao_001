@@ -4,10 +4,10 @@ import com.example.trabalho001.model.Repository
 
 object RepositorySingleton {
 
-    var repositoryList: MutableList<String> = mutableListOf()
+    var repositoryList: MutableList<Repository> = mutableListOf()
 
-    fun addToRepositoryList(reposPath: String) {
-        repositoryList.add(reposPath)
+    fun addToRepositoryList(repository: Repository) {
+        repositoryList.add(repository)
     }
 
 }
