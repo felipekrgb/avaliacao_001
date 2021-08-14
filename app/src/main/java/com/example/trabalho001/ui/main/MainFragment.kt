@@ -6,15 +6,20 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.EditText
 import com.example.trabalho001.R
+import com.example.trabalho001.endpoint.RetrofitBuilder
 import com.example.trabalho001.model.Repository
 import com.example.trabalho001.singleton.RepositorySingleton
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
-class MainFragment : Fragment(R.layout.main_fragment) {
+class MainFragment : Fragment(R.layout.main_fragment), Callback<Repository> {
 
     private lateinit var inputRepos: EditText
-    private lateinit var buttonAddRepos: EditText
+    private lateinit var buttonAddRepos: Button
 
     companion object {
         fun newInstance() = MainFragment()
@@ -25,17 +30,35 @@ class MainFragment : Fragment(R.layout.main_fragment) {
 
         loadComponents(view)
         loadEvents()
+
+        view.findViewById<Button>(R.id.nextPageButton).setOnClickListener {
+            requireActivity().supportFragmentManager.beginTransaction()
+                .replace(R.id.container, RepositoryListFragment.newInstance())
+                .commitNow()
+        }
     }
 
     private fun loadEvents() {
         buttonAddRepos.setOnClickListener {
-            addRepos()
-            println(RepositorySingleton.repositoryList)
+            callFindRepos()
         }
     }
 
-    private fun addRepos() {
-        RepositorySingleton.addToRepositoryList(inputRepos.text.toString())
+    private fun callFindRepos() {
+        val reposPath = inputRepos.text.toString()
+
+        if (reposPath.isEmpty()) {
+            println("Digite um repositório válido")
+        }
+
+        val serviceInstance = RetrofitBuilder.getServiceGithubInstance()
+        val call = serviceInstance.getNewRepos(reposPath)
+
+        call.clone().enqueue(this)
+    }
+
+    private fun addRepos(reposPath: String) {
+        RepositorySingleton.addToRepositoryList(reposPath)
     }
 
     private fun loadComponents(view: View) {
@@ -43,4 +66,13 @@ class MainFragment : Fragment(R.layout.main_fragment) {
         buttonAddRepos = view.findViewById(R.id.addReposButton)
     }
 
+    override fun onResponse(call: Call<Repository>, response: Response<Repository>) {
+        response.body()?.apply {
+            addRepos(this.name)
+        }
+    }
+
+    override fun onFailure(call: Call<Repository>, t: Throwable) {
+        println("Digite um repositório válido - FAILURE")
+    }
 }

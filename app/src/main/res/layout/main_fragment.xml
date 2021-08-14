@@ -27,4 +27,13 @@
         app:layout_constraintEnd_toEndOf="parent"
         android:text="@string/button_add_repos"/>
 
+    <Button
+        android:id="@+id/nextPageButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@id/addReposButton"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:text="next >>"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -6,6 +6,6 @@ import retrofit2.http.GET
 import retrofit2.http.Path
 
 interface GithubService {
-    @GET("/repos/{newRepos}")
-    fun getNewRepos(@Path("newRepos") reposPath: String) : Call<Repository>
+    @GET("repos/{reposPath}")
+    fun getNewRepos(@Path("reposPath", encoded = true) reposPath: String) : Call<Repository>
 }
