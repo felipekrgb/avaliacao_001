@@ -4,11 +4,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".ui.main.RepositoryListFragment">
+    tools:context=".ui.main.UsersListFragment">
 
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/repositoriesListRecyclerView"
+        android:id="@+id/usersListRecyclerView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_constraintTop_toTopOf="parent"

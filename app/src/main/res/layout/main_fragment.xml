@@ -29,7 +29,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <EditText
-            android:id="@+id/reposNameEditText"
+            android:id="@+id/userLoginEditText"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -41,11 +41,10 @@
             android:textCursorDrawable="@drawable/cursor" />
 
         <Button
-            android:id="@+id/addReposButton"
+            android:id="@+id/addUserButton"
             android:layout_width="40dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/margin_default"
-            android:backgroundTint="@color/color_default_dark"
             android:text="@string/button_add_repos" />
 
     </LinearLayout>

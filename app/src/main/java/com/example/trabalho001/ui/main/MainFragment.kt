@@ -1,25 +1,22 @@
 package com.example.trabalho001.ui.main
 
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
 import com.example.trabalho001.R
 import com.example.trabalho001.endpoint.RetrofitBuilder
-import com.example.trabalho001.model.Repository
-import com.example.trabalho001.singleton.RepositorySingleton
+import com.example.trabalho001.model.User
+import com.example.trabalho001.singleton.UserSingleton
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class MainFragment : Fragment(R.layout.main_fragment), Callback<Repository> {
+class MainFragment : Fragment(R.layout.main_fragment), Callback<User> {
 
-    private lateinit var inputRepos: EditText
-    private lateinit var buttonAddRepos: Button
+    private lateinit var inputUser: EditText
+    private lateinit var buttonAddUser: Button
 
     companion object {
         fun newInstance() = MainFragment()
@@ -32,42 +29,42 @@ class MainFragment : Fragment(R.layout.main_fragment), Callback<Repository> {
         loadEvents()
     }
 
+    private fun loadComponents(view: View) {
+        inputUser = view.findViewById(R.id.userLoginEditText)
+        buttonAddUser = view.findViewById(R.id.addUserButton)
+    }
+
     private fun loadEvents() {
-        buttonAddRepos.setOnClickListener {
-            callFindRepos()
+        buttonAddUser.setOnClickListener {
+            callFindUser()
         }
     }
 
-    private fun callFindRepos() {
-        val reposPath = inputRepos.text.toString()
+    private fun callFindUser() {
+        val userLogin = inputUser.text.toString()
 
-        if (reposPath.isEmpty()) {
-            println("Digite um repositório válido")
+        if (userLogin.isEmpty()) {
+            println("Digite um usuário")
         }
 
         val serviceInstance = RetrofitBuilder.getServiceGithubInstance()
-        val call = serviceInstance.getNewRepos(reposPath)
+        val call = serviceInstance.getNewUser(userLogin)
 
         call.clone().enqueue(this)
     }
 
-    private fun addRepos(repository: Repository) {
-        RepositorySingleton.addToRepositoryList(repository)
+    private fun addUser(user: User) {
+        UserSingleton.addToUsersList(user)
     }
 
-    private fun loadComponents(view: View) {
-        inputRepos = view.findViewById(R.id.reposNameEditText)
-        buttonAddRepos = view.findViewById(R.id.addReposButton)
-    }
-
-    override fun onResponse(call: Call<Repository>, response: Response<Repository>) {
+    override fun onResponse(call: Call<User>, response: Response<User>) {
         println("Adicionado com sucesso")
         response.body()?.apply {
-            addRepos(this)
+            addUser(this)
         }
     }
 
-    override fun onFailure(call: Call<Repository>, t: Throwable) {
-        println("Digite um repositório válido - FAILURE")
+    override fun onFailure(call: Call<User>, t: Throwable) {
+        println("Digite um usuário válido - FAILURE")
     }
 }
