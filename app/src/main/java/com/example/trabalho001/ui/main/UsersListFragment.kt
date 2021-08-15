@@ -9,24 +9,37 @@ import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.trabalho001.R
+import com.example.trabalho001.TypeList
 import com.example.trabalho001.UserInfoActivity
-import com.example.trabalho001.adapter.UsersAdapter
+import com.example.trabalho001.adapter.ListAdapter
 import com.example.trabalho001.interfaces.ClickableItem
+import com.example.trabalho001.model.ParameterFrag
 import com.example.trabalho001.model.User
 import com.example.trabalho001.singleton.UserSingleton
+import java.io.Serializable
 
-class UsersListFragment : Fragment(R.layout.list_fragment), ClickableItem {
+class UsersListFragment<T> : Fragment(R.layout.list_fragment), ClickableItem {
 
     private lateinit var recyclerViewList: RecyclerView
-    private var adapter: UsersAdapter = UsersAdapter(mutableListOf(), this)
+    private var adapter = ListAdapter<T>(mutableListOf<T>(), this)
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        adapter.update(UserSingleton.userList)
+
+        arguments?.getSerializable("parameter-list")?.let {
+            val data = it as ParameterFrag<T>
+            adapter.update(data.list, data.typeList)
+        }
     }
 
     companion object {
-        fun newInstance() = UsersListFragment()
+        fun <T> newInstance(list: MutableList<T>, typeList: TypeList) : UsersListFragment<T> {
+            return UsersListFragment<T>().apply {
+                arguments = Bundle().apply {
+                    putSerializable("parameter-list", ParameterFrag(list, typeList))
+                }
+            }
+        }
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -36,7 +49,7 @@ class UsersListFragment : Fragment(R.layout.list_fragment), ClickableItem {
 
         if (UserSingleton.userList.isEmpty()) {
             recyclerViewList.visibility = View.GONE
-            view.findViewById<TextView>(R.id.noUserFoundTextView).visibility = View.VISIBLE
+            view.findViewById<TextView>(R.id.errorListTextView).visibility = View.VISIBLE
         } else {
             recyclerViewList.layoutManager = LinearLayoutManager(requireContext())
             recyclerViewList.adapter = adapter

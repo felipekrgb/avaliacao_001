@@ -75,6 +75,7 @@ class MainFragment : Fragment(R.layout.main_fragment), Callback<User> {
             snackBar(viewFragment, R.string.user_added_success, R.color.snackbar_success)
             response.body()?.apply {
                 addUser(this)
+                println("ADICIONEI O RESPONSE")
             }
         } else {
             snackBar(viewFragment, R.string.user_invalid_error, R.color.snackbar_error)

@@ -6,7 +6,7 @@ data class StarredRepository(
     @SerializedName("owner")
     val owner: Owner,
     @SerializedName("name")
-    val title: String,
+    val name: String,
 )
 
 data class Owner(

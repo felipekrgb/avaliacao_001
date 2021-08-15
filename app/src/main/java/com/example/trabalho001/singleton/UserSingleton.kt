@@ -8,6 +8,8 @@ object UserSingleton {
 
     fun addToUsersList(user: User) {
         userList.add(user)
+        println("adicionei")
+        println(userList)
     }
 
 }
