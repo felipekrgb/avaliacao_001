@@ -4,4 +4,8 @@
     <string name="hint_add_repos">Adicionar Usuário</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="empty_user_error">Digite um usuário</string>
+    <string name="user_invalid_error">Usuário inválido</string>
+    <string name="error">Ocorreu um erro </string>
+    <string name="user_added_success">Usuário adicionado</string>
 </resources>
