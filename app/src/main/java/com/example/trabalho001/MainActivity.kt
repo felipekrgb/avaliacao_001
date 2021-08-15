@@ -1,8 +1,11 @@
 package com.example.trabalho001
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.fragment.app.Fragment
+import com.example.trabalho001.interfaces.ClickableItem
+import com.example.trabalho001.model.User
 import com.example.trabalho001.ui.main.MainFragment
 import com.example.trabalho001.ui.main.UsersListFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -12,6 +15,8 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.main_activity)
+
+        supportActionBar?.hide()
 
         replaceFrag(MainFragment.newInstance())
 
@@ -24,7 +29,6 @@ class MainActivity : AppCompatActivity() {
                 true
             }
         }
-
     }
 
     private fun replaceFrag(fragment: Fragment): Unit {
