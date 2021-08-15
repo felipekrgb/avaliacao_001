@@ -8,4 +8,6 @@
     <string name="user_invalid_error">Usuário inválido</string>
     <string name="error">Ocorreu um erro </string>
     <string name="user_added_success">Usuário adicionado</string>
+    <string name="no_user_error">Nenhum usuário encontrado</string>
+    <string name="no_repositories_error">Este usuário não possui nenhum repositório com estrela</string>
 </resources>

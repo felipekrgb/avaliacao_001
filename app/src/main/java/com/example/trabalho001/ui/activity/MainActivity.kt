@@ -1,14 +1,13 @@
-package com.example.trabalho001
+package com.example.trabalho001.ui.activity
 
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.fragment.app.Fragment
-import com.example.trabalho001.interfaces.ClickableItem
-import com.example.trabalho001.model.User
+import com.example.trabalho001.R
+import com.example.trabalho001.TypeList
 import com.example.trabalho001.singleton.UserSingleton
 import com.example.trabalho001.ui.main.MainFragment
-import com.example.trabalho001.ui.main.UsersListFragment
+import com.example.trabalho001.ui.main.ListFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainActivity : AppCompatActivity() {
@@ -25,7 +24,7 @@ class MainActivity : AppCompatActivity() {
             setOnItemSelectedListener {
                 when (it.itemId) {
                     R.id.ic_github -> replaceFrag(MainFragment.newInstance())
-                    R.id.ic_people -> replaceFrag(UsersListFragment.newInstance(UserSingleton.userList,
+                    R.id.ic_people -> replaceFrag(ListFragment.newInstance(UserSingleton.userList,
                         TypeList.USER))
                 }
                 true
