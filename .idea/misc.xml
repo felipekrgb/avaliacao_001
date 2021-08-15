@@ -10,7 +10,7 @@
         <entry key="app/src/main/res/drawable/ic_people.xml" value="0.13333333333333333" />
         <entry key="app/src/main/res/layout/activity_user_info.xml" value="0.13958333333333334" />
         <entry key="app/src/main/res/layout/fragment_repos_list.xml" value="0.22552083333333334" />
-        <entry key="app/src/main/res/layout/item_repositories_list.xml" value="0.375" />
+        <entry key="app/src/main/res/layout/item_repositories_list.xml" value="0.25" />
         <entry key="app/src/main/res/layout/item_users_list.xml" value="0.25" />
         <entry key="app/src/main/res/layout/main_activity.xml" value="0.25" />
         <entry key="app/src/main/res/layout/main_fragment.xml" value="0.25" />

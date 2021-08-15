@@ -15,7 +15,7 @@ import com.example.trabalho001.interfaces.ClickableItem
 import com.example.trabalho001.model.User
 import com.example.trabalho001.singleton.UserSingleton
 
-class UsersListFragment : Fragment(R.layout.users_list_fragment), ClickableItem {
+class UsersListFragment : Fragment(R.layout.list_fragment), ClickableItem {
 
     private lateinit var recyclerViewList: RecyclerView
     private var adapter: UsersAdapter = UsersAdapter(mutableListOf(), this)
