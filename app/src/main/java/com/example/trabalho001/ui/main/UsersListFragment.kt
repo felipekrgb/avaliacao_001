@@ -4,6 +4,7 @@ import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.View
+import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.trabalho001.R
@@ -13,7 +14,7 @@ import com.example.trabalho001.singleton.UserSingleton
 class UsersListFragment : Fragment(R.layout.users_list_fragment) {
 
     private lateinit var recyclerViewList: RecyclerView
-    private var adapter : UsersAdapter = UsersAdapter()
+    private var adapter: UsersAdapter = UsersAdapter()
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
@@ -28,7 +29,15 @@ class UsersListFragment : Fragment(R.layout.users_list_fragment) {
         super.onViewCreated(view, savedInstanceState)
 
         recyclerViewList = view.findViewById(R.id.usersListRecyclerView)
-        recyclerViewList.layoutManager = LinearLayoutManager(requireContext())
-        recyclerViewList.adapter = adapter
+
+        if (UserSingleton.userList.isEmpty()) {
+            recyclerViewList.visibility = View.GONE
+            view.findViewById<TextView>(R.id.noUserFoundTextView).visibility = View.VISIBLE
+        } else {
+            recyclerViewList.layoutManager = LinearLayoutManager(requireContext())
+            recyclerViewList.adapter = adapter
+        }
+
+
     }
 }
