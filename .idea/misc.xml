@@ -5,7 +5,7 @@
       <map>
         <entry key="app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.2557291666666667" />
         <entry key="app/src/main/res/drawable/cursor.xml" value="0.2557291666666667" />
-        <entry key="app/src/main/res/drawable/ic_github.xml" value="0.13333333333333333" />
+        <entry key="app/src/main/res/drawable/ic_github.xml" value="0.165" />
         <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.2557291666666667" />
         <entry key="app/src/main/res/drawable/ic_people.xml" value="0.13333333333333333" />
         <entry key="app/src/main/res/layout/activity_user_info.xml" value="0.13958333333333334" />
