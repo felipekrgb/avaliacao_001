@@ -8,6 +8,7 @@ import com.example.trabalho001.TypeList
 import com.example.trabalho001.singleton.UserSingleton
 import com.example.trabalho001.ui.main.MainFragment
 import com.example.trabalho001.ui.main.ListFragment
+import com.example.trabalho001.utils.snackBar
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainActivity : AppCompatActivity() {
@@ -19,6 +20,10 @@ class MainActivity : AppCompatActivity() {
         supportActionBar?.hide()
 
         replaceFrag(MainFragment.newInstance())
+
+        println(this)
+
+
 
         findViewById<BottomNavigationView>(R.id.bottomNav).apply {
             setOnItemSelectedListener {
